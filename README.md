@@ -50,7 +50,6 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 - Add a timer to track how long it takes to solve the puzzle.
 - Implement a solution checker that verifies if the user's solution is correct using event delegation.
 - Add a difficulty selector to allow users to choose between easy, medium, and hard puzzles.
-- Implement a New Game button to start a new game without refreshing the page.
 - Add a hint feature that provides clues for the user that are noted with unique colors.
 - Add a check puzzle button that checks the current state of the board against the solution.
 - User should get immediate feedback on their input, such as highlighting invalid entries.
