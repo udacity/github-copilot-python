@@ -9,11 +9,9 @@ CURRENT = {
     'solution': None
 }
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/new')
 def new_game():
@@ -22,7 +20,6 @@ def new_game():
     CURRENT['puzzle'] = puzzle
     CURRENT['solution'] = solution
     return jsonify({'puzzle': puzzle})
-
 
 @app.route('/check', methods=['POST'])
 def check_solution():
@@ -37,7 +34,6 @@ def check_solution():
             if board[i][j] != solution[i][j]:
                 incorrect.append([i, j])
     return jsonify({'incorrect': incorrect})
-
 
 if __name__ == '__main__':
     app.run(debug=True)
