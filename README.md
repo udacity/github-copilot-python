@@ -1,7 +1,6 @@
-# Refactor a Simple Sudoku Game written in Python
+# Refactor a Sudoku Game written in Python Flask
 
-Use this simple Sudoku game as a starting point to practice your skills with GitHub Copilot. 
-The goal is to refactor the code to use modern technologies, while also adding new features and improving the overall user experience.
+Use this simple Sudoku game as a starting point to practice your skills with GitHub Copilot. The goal is to refactor the code to use modern technologies, while also adding new features and improving the overall user experience.
 
 ## Getting Started
 
@@ -16,30 +15,32 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 ### Installation
 
-1. Fork this repository to your GitHub account. Use the "Fork" button on the top right corner of the repository page.
+1. Fork this repository to your GitHub account. (You can use the "Fork" button on the top right corner of the repository page.)
 
 2. Clone your forked repository to your local machine.
 
-3. Create a virtualenv and activate it (optional but recommended):
+3. Open a terminal window and navigate to the "github-copilot-python/starter" directory.
+
+4. Create a Python virtual environment and activate it (optional but highly recommended).
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-4. Install all requirements:
+5. Install required Python packages.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Run the Flask app:
+6. Run the Flask app.
 
 ```bash
 python app.py
 ```
 
-6. Open http://127.0.0.1:5000 in your browser.
+7. Open http://127.0.0.1:5000 in your browser.
 
 ## Project Instructions
 
