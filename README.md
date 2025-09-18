@@ -45,7 +45,7 @@ python app.py
 
 Use GitHub Copilot to refactor the code for this game to add more advanced features. The goal is to create a more modern and maintainable codebase and add additional functionality to the final product. You can use any combination of code completion and chat features, like Ask, Edit, or Agent modes.
 
-- Error should be handled gracefully with appropriate messages to the user.
+- Errors should be handled gracefully with appropriate messages to the user.
 - Implement a Sudoku board generator that creates a valid Sudoku puzzle with a unique solution.
 - Add a timer to track how long it takes to solve the puzzle.
 - Implement a solution checker that verifies if the user's solution is correct using event delegation.
@@ -55,7 +55,6 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 - Add a check puzzle button that checks the current state of the board against the solution.
 - User should get immediate feedback on their input, such as highlighting invalid entries.
 - Top 10 scores should be saved in local storage and displayed on the page with the user's name, time taken, hints used, and difficulty level.
-- use either modular CSS or a framework like Tailwind CSS for styling.
 - The game should be responsive and work well on both desktop and mobile devices.
 - UI colors should be visually appealing and accessible.
 - Completed and correct puzzles should display a congratulatory message with the time taken and hints used and ask for the user's name for Top 10 times.
