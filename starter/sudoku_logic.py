@@ -55,8 +55,3 @@ def generate_puzzle(clues=35):
     remove_cells(board, clues)
     puzzle = deep_copy(board)
     return puzzle, solution
-
-if __name__ == '__main__':
-    puzzle, solution = generate_puzzle()
-    for r in puzzle:
-        print(r)
