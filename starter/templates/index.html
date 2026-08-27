@@ -6,13 +6,44 @@
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
+  <header class="page-header">
+    <h1>Sudoku Game</h1>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+      <span aria-hidden="true">&#9681;</span>
+      <span class="theme-toggle-label">Dark mode</span>
+    </button>
+  </header>
+  <label for="difficulty">Difficulty</label>
+  <select id="difficulty">
+    <option value="easy">Easy</option>
+    <option value="medium" selected>Medium</option>
+    <option value="hard">Hard</option>
+  </select>
   <div id="sudoku-board"></div>
   <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
+    <button id="new-game" data-action="new-game">New Game</button>
+    <button id="check-puzzle" data-action="check-puzzle">Check Puzzle</button>
+    <button id="hint" data-action="hint">Hint</button>
+    <span id="timer">Time: 00:00</span>
+    <span id="hints-used">Hints used: 0</span>
     <span id="message"></span>
   </div>
+  <section id="leaderboard" aria-labelledby="leaderboard-title">
+    <h2 id="leaderboard-title">Top 10</h2>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Player</th>
+          <th scope="col">Time</th>
+          <th scope="col">Difficulty</th>
+          <th scope="col">Hints</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-entries"></tbody>
+    </table>
+    <p id="leaderboard-empty">No scores yet.</p>
+  </section>
   <script src="/static/main.js"></script>
 </body>
 </html>

@@ -58,3 +58,83 @@ Use GitHub Copilot to refactor the code for this game to add more advanced featu
 - The game should be responsive and work well on both desktop and mobile devices.
 - UI colors should be visually appealing and accessible.
 - Completed and correct puzzles should display a congratulatory message with the time taken and hints used and ask for the user's name for Top 10 times.
+
+# Refactor a Sudoku Game with GitHub Copilot
+
+A modern Flask-based Sudoku game refactored from legacy Python code with GitHub Copilot.
+
+The project adds Sudoku generation and validation, difficulty levels, hints, puzzle checking, a timer, a persistent Top 10 leaderboard, dark mode, responsive styling, and accessibility improvements.
+## Features
+
+### Sudoku Game
+- Generates valid Sudoku puzzles.
+- Ensures each generated puzzle has exactly one unique solution.
+- Supports Easy, Medium, and Hard difficulty levels.
+- Difficulty levels change the number of prefilled cells.
+- Prefilled cells are locked and cannot be edited.
+
+### Validation
+- Provides immediate feedback for invalid entries.
+- Check Puzzle button highlights incorrect entries.
+- Detects when the puzzle has been correctly completed.
+- Displays a congratulatory completion message.
+
+### Hint System
+- Hint button fills one correct empty cell.
+- Hint-filled cells are visually distinguished.
+- Hint-filled cells are locked.
+- Tracks the number of hints used.
+
+### Timer
+- Starts when a new puzzle begins.
+- Tracks elapsed solving time.
+- Stops when the puzzle is completed.
+
+### Top 10 Leaderboard
+- Stores completed scores in browser localStorage.
+- Records player name.
+- Records completion time.
+- Records difficulty level.
+- Records number of hints used.
+- Sorts scores by fastest completion time.
+- Keeps only the top 10 scores.
+- Scores persist between browser sessions.
+
+### User Interface
+- Light and dark mode.
+- Responsive desktop and mobile layout.
+- Alternating styles for the 3x3 Sudoku regions.
+- Accessible and readable controls.
+- Keyboard-friendly interface and visible focus states.
+## Testing
+
+Run the following command from the starter directory:
+
+pytest
+
+## How to Play
+
+1. Select a difficulty level: Easy, Medium, or Hard.
+2. Start a new puzzle.
+3. Fill the empty Sudoku cells.
+4. Prefilled cells cannot be edited.
+5. Use the Check Puzzle button to identify incorrect entries.
+6. Use Hint when assistance is needed.
+7. The timer tracks the solving time.
+8. Complete the puzzle correctly to finish the game.
+9. Enter your name when prompted after completing a puzzle.
+10. Completed scores are stored in the Top 10 leaderboard.
+## Accessibility and Responsive Design
+
+The application was reviewed for:
+
+- Keyboard navigation
+- Visible focus states
+- Accessible button and control labels
+- Readable text
+- Color contrast
+- Error and success feedback
+- Dark mode readability
+- Responsive desktop and mobile layouts
+
+The Sudoku grid and controls are designed to remain usable across different screen sizes and themes.
