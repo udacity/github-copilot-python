@@ -1,18 +1,47 @@
+
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sudoku Game</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Daily Logic</p>
+        <h1>Sudoku Game</h1>
+      </div>
+      <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle dark mode">Dark Mode</button>
+    </header>
+
+    <div class="controls" role="toolbar" aria-label="Sudoku controls">
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty" aria-label="Select puzzle difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <button id="new-game" type="button">New Game</button>
+      <button id="hint-button" type="button" class="secondary">Hint</button>
+      <button id="check-button" type="button" class="secondary">Check</button>
+      <div id="timer" aria-live="polite">00:00</div>
+    </div>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <div class="game-wrapper">
+      <div id="sudoku-board" class="sudoku-board" aria-label="Sudoku board"></div>
+
+      <aside class="score-panel" aria-label="Top scores panel">
+        <h2>Top 10 Fastest Times</h2>
+        <ol id="scoreboard" class="scoreboard"></ol>
+      </aside>
+    </div>
   </div>
+
   <script src="/static/main.js"></script>
 </body>
 </html>
