@@ -1,18 +1,61 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Sudoku Game</title>
-  <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
-  </div>
-  <script src="/static/main.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Sudoku Game</h1>
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        Dark mode
+      </button>
+
+      <div id="sudoku-board"></div>
+
+      <div class="controls">
+        <label for="player-name">Player name:</label>
+        <input
+          id="player-name"
+          type="text"
+          maxlength="30"
+          placeholder="Your name"
+        />
+
+        <label for="difficulty">Difficulty:</label>
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+
+        <button id="new-game" type="button">New Game</button>
+        <button id="check-solution" type="button">Check Solution</button>
+        <span id="timer">Time: 00:00</span>
+        <button id="hint" type="button">Hint</button>
+        <span id="message" role="status" aria-live="polite"></span>
+      </div>
+
+      <section id="leaderboard" aria-labelledby="leaderboard-title">
+        <h2 id="leaderboard-title">Top 10 Leaderboard</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Name</th>
+              <th scope="col">Time</th>
+              <th scope="col">Difficulty</th>
+              <th scope="col">Hints</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="/static/main.js"></script>
+  </body>
 </html>
