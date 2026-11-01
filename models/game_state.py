@@ -6,16 +6,11 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-
-Board = List[List[int]]
-CellPosition = Dict[str, int]
-
-
 @dataclass
 class GameState:
     """Represents the current state of a Sudoku game."""
 
-    board: Board = field(default_factory=lambda: [[0 for _ in range(9)] for _ in range(9)])
+    board: List[List[int]] = field(default_factory=lambda: [[0 for _ in range(9)] for _ in range(9)])
     difficulty: str = "medium"
     start_time: Optional[datetime] = None
     hints_used: int = 0

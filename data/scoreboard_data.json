@@ -203,11 +203,25 @@
     "date": "2026-06-05T18:01:29.163071"
   },
   {
+    "name": "Test 2",
+    "time": 341,
+    "difficulty": "easy",
+    "hints": 1,
+    "date": "2026-11-01T22:36:22.256953"
+  },
+  {
     "name": "San",
     "time": 463,
     "difficulty": "easy",
     "hints": 0,
     "date": "2026-06-07T20:57:04.174159"
+  },
+  {
+    "name": "Test 1",
+    "time": 467,
+    "difficulty": "medium",
+    "hints": 41,
+    "date": "2026-11-01T22:20:32.109019"
   },
   {
     "name": "Ich",

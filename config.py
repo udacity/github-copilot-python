@@ -9,5 +9,3 @@ DIFFICULTY_RANGES: Dict[str, Tuple[int, int]] = {
     "hard": (25, 28),
 }
 
-# Default difficulty
-DEFAULT_DIFFICULTY = "medium"
