@@ -123,15 +123,6 @@ def getfuncargnames(
 
     The name parameter should be the original name in which the function was collected.
     """
-    # TODO(RonnyPfannschmidt): This function should be refactored when we
-    # revisit fixtures. The fixture mechanism should ask the node for
-    # the fixture names, and not try to obtain directly from the
-    # function object well after collection has occurred.
-
-    # The parameters attribute of a Signature object contains an
-    # ordered mapping of parameter names to Parameter instances.  This
-    # creates a tuple of the names of the parameters that don't have
-    # defaults.
     try:
         parameters = signature(function).parameters.values()
     except (ValueError, TypeError) as e:

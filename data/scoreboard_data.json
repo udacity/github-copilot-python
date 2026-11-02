@@ -1,5 +1,12 @@
 [
   {
+    "name": "Ichi",
+    "time": 16,
+    "difficulty": "medium",
+    "hints": 47,
+    "date": "2026-11-02T01:15:51.923026"
+  },
+  {
     "name": "Cuatro",
     "time": 20,
     "difficulty": "easy",
@@ -229,5 +236,12 @@
     "difficulty": "medium",
     "hints": 37,
     "date": "2026-07-05T23:54:34.067849"
+  },
+  {
+    "name": "Test",
+    "time": 525,
+    "difficulty": "easy",
+    "hints": 3,
+    "date": "2026-11-02T01:34:01.203636"
   }
 ]
