@@ -5,13 +5,75 @@
   <title>Sudoku Game</title>
   <link rel="stylesheet" href="/static/styles.css">
 </head>
-<body>
+<body data-theme="light">
   <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
+  <div id="sudoku-board" role="grid" aria-label="Sudoku board"></div>
   <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty" aria-label="Difficulty level">
+      <option value="easy">Easy</option>
+      <option value="medium" selected>Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+    <button id="new-game" aria-label="Start a new game">New Game</button>
+    <button id="theme-toggle" aria-label="Toggle dark and light mode">Dark</button>
+    <button id="check-board" aria-label="Check the current board for conflicts">Check</button>
+    <button id="check-solution" aria-label="Validate the full solution">Validate Solution</button>
+    <button id="hint-button" aria-label="Request a hint">Hint</button>
+    <span id="hint-count" aria-live="polite">Hints: 0</span>
+    <span id="timer-display" aria-live="polite">Time: 00:00</span>
+    <span id="message" role="status" aria-live="polite" aria-atomic="true"></span>
+  </div>
+
+  <div id="scoreboard" class="scoreboard">
+    <h2>Scoreboard</h2>
+    <table id="scoreboard-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Time</th>
+          <th>Difficulty</th>
+          <th>Hints</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Congratulations Modal -->
+  <div id="congrats-modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">🎉 Congratulations! 🎉</h2>
+      <p>You solved the puzzle correctly!</p>
+      
+      <div class="stats-container">
+        <div class="stat-item">
+          <div class="stat-label">Time</div>
+          <div class="stat-value" id="stat-time">0:00</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Difficulty</div>
+          <div class="stat-value" id="stat-difficulty">Medium</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Hints Used</div>
+          <div class="stat-value" id="stat-hints">0</div>
+        </div>
+      </div>
+
+      <div class="name-input-container">
+        <label for="player-name">Enter your name</label>
+        <input type="text" id="player-name" maxlength="30" placeholder="1-30 characters" aria-label="Player name input">
+        <button id="save-score" aria-label="Save your score">Save Score</button>
+        <div id="score-save-message" class="score-save-message" role="status" aria-live="polite" aria-atomic="true"></div>
+      </div>
+      
+      <div class="modal-buttons" role="group" aria-label="Congratulations actions">
+        <button id="play-again">Play Again</button>
+        <button id="close-modal">Close</button>
+      </div>
+    </div>
   </div>
   <script src="/static/main.js"></script>
 </body>

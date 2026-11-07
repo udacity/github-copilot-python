@@ -1,39 +1,57 @@
-from flask import Flask, render_template, jsonify, request
-import sudoku_logic
+"""Sudoku game Flask application using Hexagonal Architecture.
 
-app = Flask(__name__)
+This module sets up the Flask application with the game service
+and routes using the adapter pattern.
+"""
 
-# Keep a simple in-memory store for current puzzle and solution
-CURRENT = {
-    'puzzle': None,
-    'solution': None
-}
+import os
+import sys
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# Ensure both repo root and starter directory are on sys.path
+# This allows imports from sibling packages (adapters, utils, models, config) 
+# and from domain subpackages regardless of how the app is executed
+try:
+    _current_dir = os.path.dirname(os.path.abspath(__file__))
+    _repo_root = os.path.dirname(_current_dir)
+    
+    for _path in [_repo_root, _current_dir]:
+        if _path not in sys.path:
+            sys.path.insert(0, _path)
+finally:
+    del _current_dir, _repo_root, _path
 
-@app.route('/new')
-def new_game():
-    clues = int(request.args.get('clues', 35))
-    puzzle, solution = sudoku_logic.generate_puzzle(clues)
-    CURRENT['puzzle'] = puzzle
-    CURRENT['solution'] = solution
-    return jsonify({'puzzle': puzzle})
+from flask import Flask
 
-@app.route('/check', methods=['POST'])
-def check_solution():
-    data = request.json
-    board = data.get('board')
-    solution = CURRENT.get('solution')
-    if solution is None:
-        return jsonify({'error': 'No game in progress'}), 400
-    incorrect = []
-    for i in range(sudoku_logic.SIZE):
-        for j in range(sudoku_logic.SIZE):
-            if board[i][j] != solution[i][j]:
-                incorrect.append([i, j])
-    return jsonify({'incorrect': incorrect})
+from adapters.flask_routes import FlaskRoutesAdapter
+from domain.game import GameService
+from ports.scoreboard_repository import ScoreboardRepository
 
-if __name__ == '__main__':
+
+def create_app() -> Flask:
+    """Create and configure the Flask application.
+
+    Returns:
+        Configured Flask app instance
+    """
+    app = Flask(__name__)
+
+    # Initialize domain services
+    game_service = GameService()
+
+    # Initialize repository services
+    scoreboard_repo = ScoreboardRepository()
+    scoreboard_repo.load()
+
+    # Initialize adapters
+    routes_adapter = FlaskRoutesAdapter(game_service, scoreboard_repo)
+
+    # Register routes
+    app.register_blueprint(routes_adapter.blueprint)
+
+    return app
+
+
+app = create_app()
+
+if __name__ == "__main__":
     app.run(debug=True)

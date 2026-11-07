@@ -1,0 +1,71 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0 -- C:\Users\jrobe\AppData\Local\Python\pythoncore-3.14-64\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\jrobe\Documents\GitHub\github-copilot-python
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 79 items
+
+tests/test_app.py::test_index_route PASSED                               [  1%]
+tests/test_app.py::test_new_game_route_returns_puzzle PASSED             [  2%]
+tests/test_app.py::test_new_game_route_default_clues PASSED              [  3%]
+tests/test_app.py::test_new_game_route_invalid_clues PASSED              [  5%]
+tests/test_app.py::test_check_solution_no_game PASSED                    [  6%]
+tests/test_app.py::test_check_solution_with_game PASSED                  [  7%]
+tests/test_app.py::test_check_solution_missing_board PASSED              [  8%]
+tests/test_app.py::test_check_solution_invalid_board_format PASSED       [ 10%]
+tests/test_app.py::test_validate_endpoint_returns_conflicts PASSED       [ 11%]
+tests/test_app.py::test_validate_endpoint_missing_board PASSED           [ 12%]
+tests/test_app.py::test_validate_endpoint_invalid_board_format PASSED    [ 13%]
+tests/test_app.py::test_check_complete_endpoint_returns_complete_status PASSED [ 15%]
+tests/test_app.py::test_check_complete_endpoint_returns_incomplete_status PASSED [ 16%]
+tests/test_app.py::test_check_complete_endpoint_missing_board PASSED     [ 17%]
+tests/test_app.py::test_hint_endpoint_returns_a_hint PASSED              [ 18%]
+tests/test_app.py::test_hint_endpoint_skips_filled_board_cell PASSED     [ 20%]
+tests/test_app.py::test_check_complete_endpoint_invalid_board_format PASSED [ 21%]
+tests/test_app.py::test_get_scores_endpoint PASSED                       [ 22%]
+tests/test_app.py::test_save_score_endpoint PASSED                       [ 24%]
+tests/test_app.py::test_save_score_invalid_name PASSED                   [ 25%]
+tests/test_app.py::test_save_score_invalid_time PASSED                   [ 26%]
+tests/test_game_state.py::test_game_state_defaults_and_fields PASSED     [ 27%]
+tests/test_game_state.py::test_game_state_to_dict_and_from_dict PASSED   [ 29%]
+tests/test_game_state.py::test_game_state_from_dict_with_missing_values PASSED [ 30%]
+tests/test_generation.py::test_generate_puzzle_returns_expected_dimensions PASSED [ 31%]
+tests/test_generation.py::test_generate_puzzle_invalid_difficulty_raises_value_error PASSED [ 32%]
+tests/test_generation.py::test_generated_puzzle_has_unique_solution PASSED [ 34%]
+tests/test_generation.py::test_generate_puzzle_returns_solution_copy PASSED [ 35%]
+tests/test_generation.py::test_generate_puzzle_easy_clues_in_range PASSED [ 36%]
+tests/test_generation.py::test_generate_puzzle_medium_clues_in_range PASSED [ 37%]
+tests/test_generation.py::test_generate_puzzle_hard_clues_in_range PASSED [ 39%]
+tests/test_integration.py::TestFlaskIntegration::test_full_game_flow PASSED [ 40%]
+tests/test_integration.py::TestFlaskIntegration::test_multiple_games_in_sequence PASSED [ 41%]
+tests/test_integration.py::TestFlaskIntegration::test_error_handling_for_invalid_clues PASSED [ 43%]
+tests/test_integration.py::TestFlaskIntegration::test_check_with_valid_9x9_board PASSED [ 44%]
+tests/test_integration.py::TestFlaskIntegration::test_check_with_invalid_board_dimensions PASSED [ 45%]
+tests/test_integration.py::TestFlaskIntegration::test_check_with_invalid_cell_values PASSED [ 46%]
+tests/test_integration.py::TestFlaskIntegration::test_json_response_format PASSED [ 48%]
+tests/test_integration.py::TestFlaskIntegration::test_check_response_format PASSED [ 49%]
+tests/test_integration.py::TestFlaskIntegration::test_different_difficulty_levels FAILED [ 50%]
+
+================================== FAILURES ===================================
+____________ TestFlaskIntegration.test_different_difficulty_levels ____________
+
+self = <test_integration.TestFlaskIntegration object at 0x000001F0E0A8A750>
+client = <FlaskClient <Flask 'app'>>
+
+    def test_different_difficulty_levels(self, client):
+        """Test generating puzzles with different difficulty levels."""
+        clue_counts = [20, 35, 50, 70]
+    
+        for clues in clue_counts:
+            response = client.get(f"/new?clues={clues}")
+>           assert response.status_code == 200
+E           assert 500 == 200
+E            +  where 500 = <WrapperTestResponse streamed [500 INTERNAL SERVER ERROR]>.status_code
+
+tests\test_integration.py:125: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_integration.py::TestFlaskIntegration::test_different_difficulty_levels - assert 500 == 200
+ +  where 500 = <WrapperTestResponse streamed [500 INTERNAL SERVER ERROR]>.status_code
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+================== 1 failed, 39 passed in 411.97s (0:06:51) ===================
